@@ -1,18 +1,14 @@
 <template>
   <div class="hello">
-    <h3>Installed pageLayout</h3>
-    <slot></slot>
+        <div class="page-content">
+            <div class="page-scroll-wrapper">
+                <div class="page-wrapper">
+                    <slot></slot>
+                </div>
+            </div>
+        </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
-</script>
 
 <style lang="scss">
 .page-layout-wrapper {
