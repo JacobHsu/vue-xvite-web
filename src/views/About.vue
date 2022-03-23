@@ -1,8 +1,15 @@
 <template>
-  <div class="not-found">
-    <h1>This is an about page</h1>
-  </div>
+    <page-layout>
+        <div class="not-found">Not Found</div>
+    </page-layout>
 </template>
+
+
+<script>
+import pageLayout from '@/components/pageLayout/index';
+
+export default { components: { pageLayout } };
+</script>
 
 <style lang="scss" scoped>
 .not-found {
