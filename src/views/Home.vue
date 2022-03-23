@@ -1,6 +1,7 @@
 <template>
   <div class="trade-center-wrapper">
     {{ $t('lang') }}
+    <layout></layout>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -8,9 +9,11 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import layout from './layout';
 export default {
   name: 'Home',
   components: {
+    layout,
     HelloWorld
   }
 }

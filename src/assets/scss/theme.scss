@@ -1,4 +1,5 @@
 /* theme: 0-white, 1-black **/
+@import "@/assets/scss/vars.scss";
 
 @mixin bg_color_1() {
     [data-theme="0"] & {
