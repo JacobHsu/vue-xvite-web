@@ -1,4 +1,4 @@
-// import { operatorTradepair } from 'services/trade';
+import { operatorTradepair } from '@/services/trade';
 
 const state = {
     ttoken: null,
@@ -58,22 +58,22 @@ const actions = {
         }
 
         commit('exSetOperatorTxPairLoading', true);
-        // operatorTradepair({
-        //     quoteToken: activeTxPair.quoteToken,
-        //     tradeToken: activeTxPair.tradeToken
-        // }).then(data => {
-        //     commit('exSetOperatorTxPairLoading', false);
-        //     if (!data) {
-        //         return;
-        //     }
+        operatorTradepair({
+            quoteToken: activeTxPair.quoteToken,
+            tradeToken: activeTxPair.tradeToken
+        }).then(data => {
+            commit('exSetOperatorTxPairLoading', false);
+            if (!data) {
+                return;
+            }
 
-        //     commit('exSetActiveFtoken', data.tradeTokenDetail);
-        //     commit('exSetActiveTtoken', data.quoteTokenDetail);
-        //     commit('exSetActiveOperator', data.operatorInfo);
-        // }).catch(err => {
-        //     commit('exSetOperatorTxPairLoading', false);
-        //     console.warn(err);
-        // });
+            commit('exSetActiveFtoken', data.tradeTokenDetail);
+            commit('exSetActiveTtoken', data.quoteTokenDetail);
+            commit('exSetActiveOperator', data.operatorInfo);
+        }).catch(err => {
+            commit('exSetOperatorTxPairLoading', false);
+            console.warn(err);
+        });
     }
 };
 
