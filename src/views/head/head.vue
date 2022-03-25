@@ -1,8 +1,76 @@
 <template>
     <div class="txpair-head-wrapper">
-        txpair-head-wrapper
+        <div class="content">
+            <token class="token-wrapper"></token>
+            txpair-head-wrapper
+        </div>
     </div>
 </template>
+
+
+<script>
+
+import token from './token';
+
+
+export default {
+    components: { token },
+    data() {
+        return { isShowTxPair: false };
+    },
+    computed: {
+        activeTxPair() {
+            return this.$store.getters.exActiveTxPair;
+        },
+        upDownPrev() {
+            return this.activeTxPair ? this.activeTxPair.upDownPrev : '0';
+        },
+        upDown() {
+            return this.activeTxPair ? this.activeTxPair.upDown : 0;
+        },
+        upDownIcon() {
+            if (this.upDown && +this.upDown > 0) {
+                return '+';
+            }
+            return '';
+        },
+        realPrice() {
+            return this.$store.getters.activeTxPairRealClosePrice;
+        },
+        ftokenDetail() {
+            return this.$store.state.exchangeTokens.ftoken;
+        }
+    },
+    watch: {
+        // Update meta-description and meta-keywords for better seo.
+        ftokenDetail(val = {}) {
+            const { originalSymbol, overview = {}, name, gateway } = val;
+            let keywords = [ 'Vite', 'VX', 'ViteX', 'ViteX Exchange', originalSymbol, name, gateway && gateway.name ];
+            let description = '';
+            keywords = keywords.filter(item => item);
+
+            if (overview) {
+                if (overview[this.$i18n.locale]) {
+                    description = overview[this.$i18n.locale];
+                } else if (overview.en) {
+                    description = overview.en;
+                }
+                document.querySelector('meta[name="description"]').setAttribute('content', description);
+            }
+
+            document.querySelector('meta[name="keywords"]').setAttribute('content', keywords.join(','));
+        }
+    },
+    methods: {
+        showTxPair() {
+            this.isShowTxPair = true;
+        },
+        hideTxPair() {
+            this.isShowTxPair = false;
+        }
+    }
+};
+</script>
 
 
 <style lang="scss" scoped>
