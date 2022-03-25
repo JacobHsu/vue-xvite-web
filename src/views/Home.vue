@@ -1,6 +1,7 @@
 <template>
   <div class="trade-center-wrapper">
     <layout>
+      <center-head slot="lt"></center-head>
       <center-view slot="lb2"></center-view>
     </layout>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
@@ -11,11 +12,13 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import layout from './layout';
+import centerHead from './head/head.vue';
 import centerView from './view/view.vue';
 export default {
   name: 'Home',
   components: {
     layout,
+    centerHead,
     centerView,
     HelloWorld
   }
